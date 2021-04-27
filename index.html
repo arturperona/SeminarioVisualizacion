@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="author" content="Jude moon">
+  <title>Visualización de datos de Rendimiento académico</title>
+
+  <!-- add styles to text and graphics -->
+  <style>
+    h1 {
+      background-color: black;
+      color: floralwhite;
+      font-family: Helvetica, sans-serif;
+      width: 100%;
+      height: 80px;
+      text-align: center;
+      padding-top: 30px;
+    }
+
+    h2 {
+      font-size: 1.4em;
+      text-transform: uppercase;
+      font-family: Helvetica;
+      color: #000;
+      margin-top: 0;
+    }
+
+    h3 {
+      font-family: Helvetica, sans-serif;
+      text-align: center;
+    }
+
+    h4 {
+      font-family: Helvetica, sans-serif;
+      text-align: left;
+    }
+
+    div.text {
+      font-family: Helvetica;
+      padding: 5px;
+      margin: 20px;
+      border-radius: 10px;
+    }
+  </style>
+</head>
+
+<body>
+  <h1 class="main-title">Rendimiento académico de alumnos en USA </h1>
+  <h4 class="main-autor">Nombre: Arturo Martínez Perona</h3>
+    <h4 class="main-url">Url: <a
+        href="https://js-aauhmw-titanic.stackblitz.io/">https://js-aauhmw-titanic.stackblitz.io/</a></h3>
+      <h4 class="main-fuente">Fuente: <a
+          href="https://www.kaggle.com/francksylla/titanic-machine-learning-from-disaster/data">https://www.kaggle.com/francksylla/titanic-machine-learning-from-disaster/data</a>
+        </h3>
+        <h4 class="main-fecha">Fecha: 2021</h4>
+        <br>
+        <br>
+
+        <!-- add intro text to the page body -->
+        <div class="summary">
+          <h2 class="text-title">Resumen</h2>
+          <div class="text">
+            El objetivo de esta actividad es crear una historia de visualizaciones del conjunto de datos de rendimiento
+            académico de una muestra de 1000 alumnos de Estados Unidos. Ésta contiene información acerca de los
+            distintos grupos étnicos que conforman el alumnado, así como las diferencias socioeconómicas, representados
+            por la variable del tipo de almuerzo. En este caso, se realiza la asunción de que los alumnos que eligen el
+            almuerzo reducido o gratuito son de un nivel económico más bajo que aquellos que eligen el estándar. Además,
+            contiene información sobre el nivel de estudio de los padres, así como las notas en tres tipos de materias:
+            matemáticas, lectura y escritura.
+            <br>
+            <br>
+El mensaje a transmitir es principalmente que existe una clara diferencia entre el rendimiento escolar de aquellos alumnos que vienen de familias con un poder económico menor. Por otro lado, que los resultados en matemáticas son sustancialmente peores que los de las otras dos materias, aunque es la materia donde destacan especialmente los chicos, a pesar de que en líneas generales el rendimiento de éstos es menor que el de las alumnas. Por otro lado, existe una diferencia de rendimiento entre los distintos grupos étnicos, siendo el grupo A el de menor rendimiento, y el grupo E el de mayor rendimiento. Tanto entre aquellos con bajo poder adquisitivo, como en los mejor situados.
+
+            </br>
+            <br>
+
+            <div class="metadato  ">
+              La audiencia es el público, en general, que esté interesado en estudios sociológicos entre personas de
+              distintos grupos socioeconómicos.
+
+
+            </div>
+
+
+            </br>
+            </br>
+            </br>
+          </div>
+        </div>
+
+        <!-- add data visualization -->
+        <div class="plot">
+          <!-- The first bar chart -->
+          <h2 class="plot-title">Alumnado por sexo</h2>
+          <div class="text">
+            Mediante un gráfico de barras representamos el sexo de los diferentes alumnos en el conjunto de datos, en
+            ese sentido puede verse que tenemos un conjunto bastante balanceado.<br>
+          El gráfico ha sido generado en python y puede encontrarse, junto con los demás, en el enlace al fichero de Google Colab porporcionado.
+
+          </div>
+
+          <div id="plotContainer1">
+            <a
+              href="https://imgbb.com/"><img src="data:image/png;base64,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" alt="Titanic4" border="0"></a>
+          </div>
+
+          <h2 class="plot-title">Grupos étnicos</h2>
+          <div class="text">
+            De la misma manera representamos la cantidad de grupos étnicos existentes, en este sentido el conjunto de
+            datos está algo desbalanceado, pero puede verse que el grupo C es el mayoritario mientras que el A es
+            minoritario. Por otro lado, en la tabla vemos como se distribuye el nivel de estudios de los padres para los
+            diferentes grupos étnicos. El grupo A y el E son los que se distirbuyen de manera más equilibrada, también ocurre en el grupo B aunque en este grupo la minoría obtuvo título universitario. Por otro lado el grupo C y D es el más representado aunque en el grupo C la mayoría estudio formación profesional (associate's degree) tras  acabar el instituto, con una alta tasa de abandono de los estudios secundarios (some college), siendo esto último algo que es mayoritario en el grupo D.<br>
+
+          </div>
+          <div id="plotContainer2">
+            <a
+              href="https://colab.research.google.com/drive/1M2k8cwIAB8pIWXQ2xdFm7RcntkLKXzro#scrollTo=vipOKUWd5MDd"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAYUAAAEGCAYAAACKB4k+AAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAALEgAACxIB0t1+/AAAADh0RVh0U29mdHdhcmUAbWF0cGxvdGxpYiB2ZXJzaW9uMy4yLjIsIGh0dHA6Ly9tYXRwbG90bGliLm9yZy+WH4yJAAAUyElEQVR4nO3dfZBldX3n8ffH4VEREaclwMxmSIKxMOIYWxZDNqK4Ea2YQUMIbEWRsBkrC6xUmdQaazeiu1bcShSfdrUmggyWimTVBROCQURc8QF7kKeBoCPCwmRgWiAIPuAyfvePc/r0Zaan587Qp2/P9PtVdeue8zsP93t/M92fPg/3d1NVSJIE8JRRFyBJWjgMBUlSx1CQJHUMBUlSx1CQJHX2GnUBT8bSpUtrxYoVoy5DknYr69at+0FVjc20bLcOhRUrVjAxMTHqMiRpt5Lk7u0t8/SRJKljKEiSOoaCJKljKEiSOoaCJKljKEiSOoaCJKljKEiSOoaCJKmzW3+iWcP5v+98/qhLmHP/6i9uGXUJ0h7JIwVJUsdQkCR1DAVJUsdQkCR1DAVJUsdQkCR1DAVJUsdQkCR1eguFJPsluT7JTUnWJ3lH235Ekm8m2ZDk00n2adv3bec3tMtX9FWbJGlmfR4pPAa8vKpeAKwETkxyLPDfgfOr6leAh4Az2/XPBB5q289v15MkzaPeQqEaj7aze7ePAl4O/K+2fS1wUju9qp2nXX5CkvRVnyRpW71eU0iyJMmNwGbgKuB7wL9U1ePtKvcCh7fThwP3ALTLHwaeNcM+VyeZSDIxOTnZZ/mStOj0GgpVtaWqVgLLgGOA587BPtdU1XhVjY+NjT3pGiVJ0+bl7qOq+hfgGuAlwEFJpkZnXQZsbKc3AssB2uXPAB6Yj/okSY0+7z4aS3JQO70/8G+B22nC4eR2tdOBy9rpy9t52uVfqqrqqz5J0rb6/D6FQ4G1SZbQhM+lVfV3SW4DLkny34BvAxe0618AfDzJBuBB4NQea5MkzaC3UKiqm4EXztB+J831ha3bfwr8fl/1SJJ2zE80S5I6hoIkqWMoSJI6hoIkqWMoSJI6hoIkqWMoSJI6hoIkqWMoSJI6hoIkqWMoSJI6hoIkqWMoSJI6hoIkqWMoSJI6hoIkqWMoSJI6hoIkqWMoSJI6vX1Hs6SF7drfeumoS5hzL/3KtaMuYbfnkYIkqWMoSJI6hoIkqdNbKCRZnuSaJLclWZ/kzW37eUk2Jrmxfbx6YJs/T7IhyR1JXtlXbZKkmfV5oflx4C1VdUOSpwPrklzVLju/qv56cOUkRwGnAs8DDgO+mOQ5VbWlxxolSQN6O1Koqk1VdUM7/QhwO3D4LJusAi6pqseq6vvABuCYvuqTJG1rXq4pJFkBvBD4Ztt0dpKbk1yY5Jlt2+HAPQOb3cvsISJJmmO9h0KSA4DPAOdW1Q+BDwO/DKwENgHv2cn9rU4ykWRicnJyzuuVpMWs11BIsjdNIHyiqj4LUFX3V9WWqvo58DdMnyLaCCwf2HxZ2/YEVbWmqsaranxsbKzP8iVp0enz7qMAFwC3V9V7B9oPHVjttcCt7fTlwKlJ9k1yBHAkcH1f9UmSttXn3UfHAa8HbklyY9v2NuC0JCuBAu4C3gRQVeuTXArcRnPn0lneeSRJ86u3UKiqrwKZYdEVs2zzLuBdfdUkSZqdn2iWJHUMBUlSx1CQJHUMBUlSx1CQJHUMBUlSx1CQJHUMBUlSx1CQJHUMBUlSx1CQJHUMBUlSx1CQJHUMBUlSx1CQJHUMBUlSx1CQJHUMBUlSx1CQJHUMBUlSx1CQJHUMBUlSx1CQJHUMBUlSp7dQSLI8yTVJbkuyPsmb2/aDk1yV5Lvt8zPb9iT5QJINSW5O8ut91SZJmlmfRwqPA2+pqqOAY4GzkhwFvBW4uqqOBK5u5wFeBRzZPlYDH+6xNknSDHoLharaVFU3tNOPALcDhwOrgLXtamuBk9rpVcDF1fgGcFCSQ/uqT5K0rXm5ppBkBfBC4JvAIVW1qV10H3BIO304cM/AZve2bVvva3WSiSQTk5OTvdUsSYtR76GQ5ADgM8C5VfXDwWVVVUDtzP6qak1VjVfV+NjY2BxWKknqNRSS7E0TCJ+oqs+2zfdPnRZqnze37RuB5QObL2vbJEnzpM+7jwJcANxeVe8dWHQ5cHo7fTpw2UD7G9q7kI4FHh44zSRJmgd79bjv44DXA7ckubFtexvwbuDSJGcCdwOntMuuAF4NbAB+DJzRY22SpBn0FgpV9VUg21l8wgzrF3BWX/VIknaszyOFkXrRn1086hLm3Lq/esOoS5C0h3OYC0lSx1CQJHUMBUlSZ6hQSHL1MG2SpN3brBeak+wHPBVY2o5mOnU30YHMMASFJGn3tqO7j94EnAscBqxjOhR+CHyox7okSSMwayhU1fuB9yc5p6o+OE81SZJGZKjPKVTVB5P8BrBicJuq2vM+DCBJi9hQoZDk48AvAzcCW9rmAgwFSdqDDPuJ5nHgqHYoCknSHmrYzyncCvxCn4VIkkZv2COFpcBtSa4HHptqrKrf7aUqSdJIDBsK5/VZhCRpYRj27qNr+y5EkjR6w9599AjT36W8D7A38KOqOrCvwiRJ82/YI4WnT023X7O5Cji2r6IkSaOx06OkVuN/A6/soR5J0ggNe/rodQOzT6H53MJPe6lIkjQyw9599JqB6ceBu2hOIUmS9iDDXlM4o+9CJEmjN+yX7CxL8rkkm9vHZ5Is67s4SdL8GvZC88eAy2m+V+Ew4PNtmyRpDzJsKIxV1ceq6vH2cREwNtsGSS5sjypuHWg7L8nGJDe2j1cPLPvzJBuS3JHEO5skaQSGDYUHkvxhkiXt4w+BB3awzUXAiTO0n19VK9vHFQBJjgJOBZ7XbvM/kywZsjZJ0hwZNhT+CDgFuA/YBJwMvHG2DarqK8CDQ+5/FXBJVT1WVd8HNgDHDLmtJGmODBsK7wROr6qxqno2TUi8Yxdf8+wkN7enl57Zth0O3DOwzr1t2zaSrE4ykWRicnJyF0uQJM1k2FA4uqoempqpqgeBF+7C632Y5hvcVtIccbxnZ3dQVWuqaryqxsfGZr2sIUnaScOGwlMG/qonycEM/8G3TlXdX1VbqurnwN8wfYpoI7B8YNVlbZskaR4N+4v9PcDXk/xtO//7wLt29sWSHFpVm9rZ19J8oxs0t7t+Msl7aW55PRK4fmf3L0l6cob9RPPFSSaAl7dNr6uq22bbJsmngOOBpUnuBd4OHJ9kJc0w3HcBb2r3vz7JpcBtNMNonFVVW3b+7UiSnoyhTwG1ITBrEGy1/mkzNF8wy/rvYheOPiRJc2enh86WJO25dvpisSTtaT70ls+PuoQ5d/Z7XrPjlWbgkYIkqWMoSJI6hoIkqWMoSJI6hoIkqWMoSJI6hoIkqWMoSJI6hoIkqWMoSJI6hoIkqWMoSJI6hoIkqWMoSJI6hoIkqWMoSJI6hoIkqWMoSJI6hoIkqWMoSJI6hoIkqWMoSJI6vYVCkguTbE5y60DbwUmuSvLd9vmZbXuSfCDJhiQ3J/n1vuqSJG1fn0cKFwEnbtX2VuDqqjoSuLqdB3gVcGT7WA18uMe6JEnb0VsoVNVXgAe3al4FrG2n1wInDbRfXI1vAAclObSv2iRJM5vvawqHVNWmdvo+4JB2+nDgnoH17m3btpFkdZKJJBOTk5P9VSpJi9DILjRXVQG1C9utqarxqhofGxvroTJJWrzmOxTunzot1D5vbts3AssH1lvWtkmS5tF8h8LlwOnt9OnAZQPtb2jvQjoWeHjgNJMkaZ7s1deOk3wKOB5YmuRe4O3Au4FLk5wJ3A2c0q5+BfBqYAPwY+CMvuqSJG1fb6FQVadtZ9EJM6xbwFl91SJJGo6faJYkdXo7UpAWouM+eNyoS5hz151z3ahL0B7EIwVJUsdQkCR1DAVJUsdQkCR1DAVJUsdQkCR1DAVJUsdQkCR1DAVJUsdQkCR1DAVJUsdQkCR1DAVJUsdQkCR1DAVJUsdQkCR1DAVJUsdQkCR1DAVJUsdQkCR1DAVJUmevUbxokruAR4AtwONVNZ7kYODTwArgLuCUqnpoFPVJ0mI1yiOFl1XVyqoab+ffClxdVUcCV7fzkqR5tJBOH60C1rbTa4GTRliLJC1KowqFAv4xybokq9u2Q6pqUzt9H3DITBsmWZ1kIsnE5OTkfNQqSYvGSK4pAL9ZVRuTPBu4Ksk/DS6sqkpSM21YVWuANQDj4+MzriNJ2jUjOVKoqo3t82bgc8AxwP1JDgVonzePojZJWszmPRSSPC3J06emgd8GbgUuB05vVzsduGy+a5OkxW4Up48OAT6XZOr1P1lVVyb5FnBpkjOBu4FTRlCbJC1q8x4KVXUn8IIZ2h8ATpjveiRJ0xbSLamSpBEzFCRJHUNBktQxFCRJHUNBktQxFCRJHUNBktQxFCRJHUNBktQxFCRJHUNBktQxFCRJHUNBktQxFCRJHUNBktQxFCRJHUNBktQxFCRJHUNBktQxFCRJHUNBktQxFCRJHUNBktQxFCRJnQUXCklOTHJHkg1J3jrqeiRpMVlQoZBkCfA/gFcBRwGnJTlqtFVJ0uKxoEIBOAbYUFV3VtXPgEuAVSOuSZIWjVTVqGvoJDkZOLGq/n07/3rgX1fV2QPrrAZWt7O/Ctwx74Vuaynwg1EXsUDYF9Psi2n2xbSF0Be/WFVjMy3Ya74rebKqag2wZtR1DEoyUVXjo65jIbAvptkX0+yLaQu9Lxba6aONwPKB+WVtmyRpHiy0UPgWcGSSI5LsA5wKXD7imiRp0VhQp4+q6vEkZwNfAJYAF1bV+hGXNYwFdTprxOyLafbFNPti2oLuiwV1oVmSNFoL7fSRJGmEDAVJUsdQGJEkW5LcmOSmJDck+Y1R1zQqSX4hySVJvpdkXZIrkjxn1HWNSpKTklSS5466llEa+BlZ3/6cvCXJovydNdAXU4/ehgDymsIskuxVVY/3tO9Hq+qAdvqVwNuq6qV9vNZc6KsvkgT4GrC2qj7Str0AOLCq/s9cv95c6PP/Rbv/TwOHAV+qqrf39TpzYR5/Rp4NfBK4bqH2yXz1Rd8WZeoCJPkv7cB7X03yqSR/2rZ/Ocn7kkwAb05yQpJvJ7klyYVJ9m3XuyvJ0nZ6PMmX2+nzknw8ydeTfDfJHw9RzoHAQ/280x0bcV+8DPh/U4EAUFU3jSoQRv3/IskBwG8CZ9Lckj0yo+6LQVW1mWYkg7PbPyTm1ULqi74tqFtS50uSFwO/B7wA2Bu4AVg3sMo+VTWeZD/gu8AJVfWdJBcDfwK8bwcvcTRwLPA04NtJ/r6q/nmrdfZPciOwH3Ao8PIn+752xQLoi1/b6vVGZgH0BTRjfV3Z7veBJC+qqnnvnwXSF09QVXemGTTz2cD9u/K+dsUC6Yup3xdT/rKqPr3r72r7FuuRwnHAZVX106p6BPj8VsunOvtXge9X1Xfa+bXAbw2x/8uq6idV9QPgGpqB/rb2k6paWVXPBU4ELh7FX0AsjL5YKBZCX5xGMxAk7fNpO/MG5tBC6IuFYiH0xdTvi6lHL4EAi/RIYQg/GmKdx5kO1f22Wrb1hZpZL9xU1dfbQ8sxYPNQFc6fvvtiPXDyLtQ1Cr32RZKDaY4Yn5+kaD7AWUn+rBbexb95/RkBSPJLwBYW38/IvFqsRwrXAa9Jsl97Dvd3trPeHcCKJL/Szr8euLadvgt4UTv9e1ttt6rd97OA42mG79iuNHeZLAEe2Jk3MUdG3RdfAvZNM/otAEmOTvJvduXNPEmj7ouTgY9X1S9W1YqqWg58H1iMffEEScaAjwAfGkFALqi+6NuiDIWq+hbNmEo3A/8A3AI8PMN6PwXOAP42yS3Az2n+YwK8A3h/e4Fpy1ab3kxzGPgN4L9u51zp/mlvL6M5/Dy9qrbeT+9G3RftD/hrgVekuSV1PfCXwH1z8w6HN+q+oDlV9Lmt2j7DCE4hLYC+gOmfkfXAF4F/bPc5rxZYX0w93j0Hb21Gi/aW1CQHVNWjSZ4KfAVYXVU3zMF+zwMeraq/frL7mi/2xTT7Ypp9MW0x9cVivqawJs1Xfe5Hc4/8k/4H3o3ZF9Psi2n2xbRF0xeL9khBkrStRXlNQZI0M0NBktQxFCRJHUNB2glJ/iHJslmWvzHJYQPz3Zg3O/EaX9vB8ncmeUU7fW57R4w0JwwF7dHSmJP/50n2B55VVffOstobaUY43WVVNesw6lX1F1X1xXb2XMBQ0JwxFLTHSbIizYiWFwO3AhckmUgzLv87BtZ7cZKvpRmr//okT0+yJMlfJflWkpuTvGlg18cDX263fVGSa9N8/8MXkhya5GRgHPhE+wGj/dvtzknznRm3tJ9enxod88I0o2zemeQ/DtT16MD0f2q3u2nqA0tJLkpycrvNYcA1Sa5J8kdJ3jew7R8nOX9OO1d7vqry4WOPegAraD5Nemw7f3D7vITml/rRwD7AncCL22UH0nxuZzXwn9u2fYEJ4Ih2/gM0YxPtTfMdEGNt+x8AF7bTXwbGB2q5Czinnf4PwEfb6fPafewLLKUZ4mTvdtmj7fOr2nWeutX7uAg4eWD/S9vpA4DvDezna8DzR/3v4WP3eizmD69pz3Z3VX2jnT6lHVtpL5phyo+iGXRsUzVDGFBVPwRI8tvA0e1f/QDPAI6kGYPoOOBPaUbD/DXgqjQD2y4BNs1Sy2fb53XA6wba/76qHgMeS7IZOAQYPDX1CuBjVfXjtsYHZ3vD1Xzi9kvA7yS5nSYcbpltG2lrhoL2VD8CSHIEzS/yF1fVQ0kuYttRKgeF5i/7LzyhsRmh856q+lmaJFhfVS8ZspbH2uctPPFn7rGB6a2X7aqPAm8D/gn42BzsT4uM1xS0pzuQJiAeTnIIzSkZaEa0PDTNF6jQXk/YC/gC8CdJ9m7bn5Pkae12Vw5sO5bkJe06eyd5XrvsEeDpc1T7VcAZU3cXpRlae2tPeL2q+iawHPh3wKfmqA4tIh4paI9WVTcl+TbNX8730AyDTPsX/x8AH2wvCP+E5nTNR2muSdzQHhFMAifRfBHSOQPbngx8IMkzaH6O3kfz3RAXAR9J8hNg2COJ7dV+ZZKVwESSnwFX0BwFDFoDXJnkn6vqZW3bpcDKqhrZV7xq9+XYR9IOpPme3euqanzUtQwjyd8B51fV1aOuRbsfTx9JO1BVj+0OgZDkoCTfofnqRgNBu8QjBUlSxyMFSVLHUJAkdQwFSVLHUJAkdQwFSVLn/wOppEAa3OOPSAAAAABJRU5ErkJggg==" alt="Titanic5" border="0"></a>
+          </div>
+          <div id="plotContainer4">
+            <div class='tableauPlaceholder' id='viz1619513481962' style='position: relative'><noscript><a
+                  href='#'><img alt='Hoja 4 ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;se&#47;seminariovisu4&#47;Hoja4&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='seminariovisu4&#47;Hoja4' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;se&#47;seminariovisu4&#47;Hoja4&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='language' value='es' /><param name='filter' value='publish=yes' /></object>
+            </div>
+            <script type='text/javascript'>
+              var divElement = document.getElementById('viz1619513481962');                    var vizElement = divElement.getElementsByTagName('object')[0];                    vizElement.style.width='100%';vizElement.style.height=(divElement.offsetWidth*0.75)+'px';                    var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                
+            </script>
+
+            <h2 class="plot-title">Distribución de notas</h2>
+            <div class="text">
+              En esta representación podemos observar como se distribuye la nota media entre las 3 materias en los
+              alumnos, se puede ver que en general el nivel de los alumnos no es bajo, ya que la distirbución está
+              bastante desplazada hacia los aprobados, siendo la mayoría de las notas entre los 60 y los 80 puntos sobre
+              100.
+            </div>
+
+            <div id="plotContainer3">
+              <a
+                href="https://colab.research.google.com/drive/1M2k8cwIAB8pIWXQ2xdFm7RcntkLKXzro#scrollTo=kNfhvYcb2vsE"><img src="data:image/png;base64,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" alt="Supervivientes-por-Grupos" border="0"></a>
+            </div>
+
+
+            </br>
+            </br>
+
+            <!-- The second bar chart -->
+            <h2 class="plot-title">Supervivientes</h2>
+            <div id="plotContainer4">
+              <div class="text">
+                Finalmente tratamos de representar en un mismo gráfico el cruce de las dos variables cualitativas(sexo y
+                pasaje) que nos interesa analizar sobre la varialible cantidad de supervivientes o fallecidos(variable
+                cuantitativa).
+
+              </div>
+              <br>
+              <a
+                href="https://imgbb.com/"><img src="https://i.ibb.co/fpg1ZT2/screenshot-eu-west-1a-online-tableau-com-2019-04-02-14-29-41.png" alt="screenshot-eu-west-1a-online-tableau-com-2019-04-02-14-29-41" border="0"></a><br /><a
+                target='_blank' href='https://es.imgbb.com/'></a><br />
+
+              <a
+                href="https://imgbb.com/"><img src="https://i.ibb.co/L1DZRsp/screenshot-eu-west-1a-online-tableau-com-2019-04-02-14-32-07.png" alt="screenshot-eu-west-1a-online-tableau-com-2019-04-02-14-32-07" border="0"></a><br /><a
+                target='_blank' href='https://es.imgbb.com/'></a><br />
+              <br>
+              <a
+                href="https://ibb.co/Dt23NTN"><img src="https://i.ibb.co/CzGxqDq/Titanic3.png" alt="Titanic3" border="0"></a>
+
+
+
+            </div>
+            <!-- add outro text to the page body -->
+            <div class="Interpretation">
+              <h2 class="text-title">Interpretation</h2>
+              <div class="text">
+                <p>Teniendo en cuenta que las mujeres eran del 35%(466/1309) y las mujeres de 1ª y 2ª clase representan
+                  solo el 24%( (139+94)/1309) del tamaño total de la muestra, se evidencia que las personas que se
+                  pusieron en botes salvavidas no se tomaron al azar, sino de forma selectiva. La visualización de
+                  gráficos cirulares combinados muestra que las características de ser mujer y pertenecer a las clases
+                  más
+                  altas(1ª y 2ª) eran las principales prioridades para colocarse en botes salvavidas.</p>
+                </br>
+              </div>
+            </div>
+
+            <div id="plotContainer5">
+              <a
+                href="https://ibb.co/ZhbN85p"><img src="https://i.ibb.co/JzSC7Vw/Supervivientes-por-Grupos2.png" alt="Supervivientes-por-Grupos2" border="0"></a>
+            </div>
+
+            </br>
+            </br>
+            </br>
+          </div>
+
+
+</body>
+
+</html>
